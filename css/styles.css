@@ -114,10 +114,9 @@ body {
   border-bottom: 1px solid #e7e9fc;
   box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
-}
-
-.header-container {
-  display: flex;
+    height: 70px;
+    display: flex;
+    align-items: center;
 }
 
 .header-logo {
@@ -128,7 +127,6 @@ body {
   display: flex;
   align-items: center;
   margin-right: auto;
-  padding: 20px 0;
 }
 
 .header-nav-list,
@@ -143,6 +141,7 @@ body {
 
 .header-logo-part {
   color: var(--secondary-text-color);
+  padding: 20px 0;
 }
 
 .header-nav-link {
@@ -192,6 +191,22 @@ body {
   color: var(--hover-focus-active-color);
 }
 
+.icon-hamburger-menu{
+  stroke: var(--secondary-text-color);
+  padding: 5px 0 0;
+}
+.top-header{
+  align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.hamburger-menu{
+  position: absolute;
+  right: 16px;
+}
+
+
+
 /* Hero */
 
 .hero {
@@ -209,6 +224,17 @@ body {
   margin: 0 auto;
 }
 
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .hero {
+    background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../images/hero-mob.jpg);
+  }
+}
 .hero-container {
   display: flex;
   flex-direction: column;
@@ -530,8 +556,8 @@ body {
 
 .portfolio-list-btn {
   display: flex;
+  flex-wrap: wrap;
   gap: 24px;
-  justify-content: center;
   margin-bottom: 72px;
 }
 
@@ -540,6 +566,7 @@ body {
   flex-wrap: wrap;
   gap: 24px;
   row-gap: 48px;
+  justify-content: center;
 }
 
 .portfolio-link {
@@ -553,7 +580,7 @@ body {
 }
 
 .portfolio-item {
-  width: calc((100% - 48px) / 3);
+  width: 360px;
   position: relative;
 }
 
@@ -568,6 +595,14 @@ body {
 .portfolio-cover-wrap {
   position: relative;
   overflow: hidden;
+}
+.portfolio-item .second-title{
+  color: var(--secondary-text-color);
+font-size: 20px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0.4px;
+margin: 0 0 8px;
 }
 
 .portfolio-cover-text {
@@ -605,7 +640,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   transition: transform var(--main-transition);
-  width: 408px;
+  width: 392px;
   min-height: 584px;
   background: #fcfcfc;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
@@ -821,15 +856,22 @@ textarea::placeholder {
   background-color: var(--hover-focus-active-color);
 }
 
-@media screen and (min-width: 480px) {
-  .header-nav-list {
-    display: none;
-  }
-}
+
 @media screen and (min-width: 768px) {
   .hero-title {
     font-size: 56px;
   }
+  @media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .hero {
+    background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../images/hero-tab.jpg);
+  }
+}
 
   .features-list {
     flex-direction: row;
@@ -884,10 +926,19 @@ textarea::placeholder {
     text-align: left;
   }
 
+  .portfolio-list-btn {
+    justify-content: center;
+  }
 
+  .modal {
+    width: 408px;
+}
 }
 
 @media screen and (min-width: 1158px) {
+  .hamburger-menu{
+    display:none;
+  }
   .header-nav-list,
   .header-address {
     display: flex;
@@ -895,6 +946,17 @@ textarea::placeholder {
   .container {
     width: 1158px;
   }
+  @media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .hero {
+    background-image: linear-gradient(
+      rgba(46, 47, 66, 0.7),
+      rgba(46, 47, 66, 0.7)
+    ),
+    url(../images/hero-desk.jpg);
+  }
+}
   .team > .container {
     width: unset;
   }
@@ -958,7 +1020,9 @@ textarea::placeholder {
   .footer-content-form {
     margin-left: unset;
   }
-
+  .portfolio-item {
+    width: calc((100% - 48px) / 3);
+  }
 
 
 }
