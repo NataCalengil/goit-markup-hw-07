@@ -129,14 +129,12 @@ body {
   margin-right: auto;
 }
 
-.header-nav-list,
-.header-address {
+.header-address-list {
   display: none;
 }
 
 .header-nav-list {
-  gap: 40px;
-  align-items: center;
+  display: none;
 }
 
 .header-logo-part {
@@ -177,11 +175,6 @@ body {
   align-items: center;
 }
 
-.header-address-list {
-  display: flex;
-  gap: 40px;
-}
-
 .header-address-link {
   color: var(--body-text-color);
   transition: color var(--main-transition);
@@ -205,7 +198,103 @@ body {
   right: 16px;
 }
 
+/*  Mobile menu */
 
+.menu-toggle {
+  min-height: 40px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+}
+
+.menu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 32px;
+  background-color: var(--white-color);
+  z-index: 999;
+
+  transform: translateX(100%);
+  transition: transform 250ms ease-in-out;
+}
+
+.menu-container.is-open {
+  transform: translateX(0);
+}
+
+.menu-container .menu-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #fff;
+}
+
+.hamburger-mobile-content{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+    height: 100%;
+}
+.mobile-menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin: 40px 0 0;
+}
+
+.mobile-menu .link {
+  display: block;
+  font-size: 30px;
+  padding: 10px;
+  font-weight: 700;
+  color: var(--secondary-text-color);
+  text-decoration: none;
+  line-height: 40px;
+letter-spacing: 0.72px;
+  
+}
+.mobile-header-address{
+  display: flex;
+  flex-direction: column;
+  gap:40px;
+}
+.mobile-address-phone{
+  color: var(--accent-color);
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40px;
+}
+.mobile-address-email{
+  color: var(--body-text-color);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2; 
+  letter-spacing: 0.4px;
+}
+.mobile-header-address .icon-list {
+display: flex;
+    justify-content: space-between;
+    flex-direction: row;  
+    max-width: 375px;
+}
+.mobile-menu .link:hover,
+.mobile-menu .link:focus {
+  color: var(--hover-focus-active-color);
+}
 
 /* Hero */
 
@@ -640,7 +729,7 @@ margin: 0 0 8px;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   transition: transform var(--main-transition);
-  width: 392px;
+  width: 300px;
   min-height: 584px;
   background: #fcfcfc;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
@@ -858,20 +947,25 @@ textarea::placeholder {
 
 
 @media screen and (min-width: 768px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .hamburger-menu{
+    display:none;
+  }
+  .header-nav-list {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+  .header-address-list {
+      display: flex;
+      flex-direction: column;
+    }
   .hero-title {
     font-size: 56px;
   }
-  @media (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .hero {
-    background-image: linear-gradient(
-      rgba(46, 47, 66, 0.7),
-      rgba(46, 47, 66, 0.7)
-    ),
-    url(../images/hero-tab.jpg);
-  }
-}
 
   .features-list {
     flex-direction: row;
@@ -929,19 +1023,34 @@ textarea::placeholder {
   .portfolio-list-btn {
     justify-content: center;
   }
-
   .modal {
     width: 408px;
+}
+
+@media (min-device-pixel-ratio: 2),
+(min-resolution: 192dpi),
+(min-resolution: 2dppx) {
+.hero {
+  background-image: linear-gradient(
+    rgba(46, 47, 66, 0.7),
+    rgba(46, 47, 66, 0.7)
+  ),
+  url(../images/hero-tab.jpg);
+}
 }
 }
 
 @media screen and (min-width: 1158px) {
-  .hamburger-menu{
-    display:none;
-  }
+
   .header-nav-list,
   .header-address {
     display: flex;
+  }
+
+  .header-address-list {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
   }
   .container {
     width: 1158px;
@@ -1014,7 +1123,7 @@ textarea::placeholder {
 
   .footer-content-logo,
   .footer-content-social {
-    margin-right: 120px;
+    margin-right: auto;
   }
 
   .footer-content-form {
